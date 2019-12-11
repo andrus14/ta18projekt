@@ -19,7 +19,7 @@ jobs:
         # FTP account password
         FTP_PASSWORD: ${{ secrets.ftp_password }}
         # The port used to connect to server
-        PORT: 21 
+        port: 21 
         # The remote folder to copy to, deafults to root FTP folder (I recommend you configure this on your server side instead of here)
-        REMOTE_DIR: /ta18projekt
+        remote_dir: /ta18projekt
 
