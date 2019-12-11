@@ -11,7 +11,7 @@ jobs:
     - uses: actions/checkout@v1
     - name: FTP Deploy
       uses: SamKirkland/FTP-Deploy-Action@2.0.0
-      with:
+      env:
         # FTP server name (you may need to specify a port)
         FTP_SERVER: ${{ secrets.ftp_server }}
         # FTP account username
