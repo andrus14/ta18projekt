@@ -1,22 +1,15 @@
-name: CI
-
-on: [push]
-
+name: Deploy via ftp
+on: push
 jobs:
-  build:
-
+  deploy:
+    name: Deploy
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v1
-    - name: FTP Deploy
-      uses: SamKirkland/FTP-Deploy-Action@2.0.0
-      env:
-        # FTP server name (you may need to specify a port)
-        FTP_SERVER: andrus.itmajakas.ee
-        # FTP account username
-        FTP_USERNAME: andrus.andrus.itmajakas.ee
-        # FTP account password
-        FTP_PASSWORD: ${{ secrets.FTP_PAROOL }}
-        
-
+    - uses: actions/checkout@master
+    - name: Upload ftp
+      uses: sebastianpopp/ftp-action@releases/v1
+      with:
+        host: ${{ secrets.FTP_SERVER }}
+        user: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        remoteDir: "ta18projekt"
