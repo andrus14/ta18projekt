@@ -13,6 +13,7 @@ $app['database'] = new QueryBuilder(
     Connection::make($app['config']['database'])
 );
 
+require 'controllers/UserController.php';
 require 'controllers/PagesController.php';
 require 'controllers/CountriesController.php';
 

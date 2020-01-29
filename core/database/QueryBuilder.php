@@ -34,6 +34,21 @@ class QueryBuilder
         }
     }
 
+    public function selectUserByEmail ($table, $parameters) {
+        $sql = sprintf(
+            'SELECT * FROM %s WHERE email=:email',
+            $table
+        );
+
+        try {
+            $statement = $this->pdo->prepare($sql);
+            $statement->execute($parameters);
+            return $statement->fetch(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die('Whoops!');
+        }
+    }
+
     public function insert ($table, $parameters) {
         $sql = sprintf(
             'INSERT INTO %s (%s) VALUES (%s)',
